@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
+import 'package:to_do_app/widgets/button.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -7,11 +9,51 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: SvgPicture.asset(
-        "assets/Group 271.svg",
-        height: 300,
-      )),
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          SizedBox(
+            height: 100.h,
+            width: 100.w,
+          ),
+          Image.asset(
+            "assets/background.png",
+            height: 100.h,
+            fit: BoxFit.cover,
+          ),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(
+                  height: 5.h,
+                ),
+                Image.asset(
+                  "assets/intro.png",
+                  height: 30.h,
+                ),
+                Column(
+                  children: [
+                    Text("Task Management &\nTo-Do List",
+                        style: GoogleFonts.lexendDeca(
+                            fontSize: 2.6.h, color: const Color(0xff24252C)),
+                        textAlign: TextAlign.center),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 3.h),
+                      child: Text(
+                          "This productive tool is designed to help\nyou better manage your task\n project-wise conveniently!",
+                          style: GoogleFonts.lexendDeca(
+                              fontSize: 1.5.h, color: const Color(0xff24252C)),
+                          textAlign: TextAlign.center),
+                    ),
+                    const Button(title: "Let’s Start",)
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
