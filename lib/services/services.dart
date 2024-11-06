@@ -1,10 +1,17 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Services {
+class TaskServices {
   final SharedPreferences prefs;
-  Services({required this.prefs});
+  TaskServices({required this.prefs});
 
   // show all tasks
+  Future<List<String>> getTasks() async {
+    if (prefs.getStringList("tasks") == null) {
+      print("error----");
+      return [];
+    }
+    return prefs.getStringList("tasks") ?? [];
+  }
 
   // add task
   Future<void> addTask(String task) async {
@@ -15,6 +22,11 @@ class Services {
   }
 
   // delete task
+  Future<void> deleteTask(int index) async {
+    final res = prefs.getStringList("tasks");
+    res?.removeAt(index);
+    await prefs.setStringList("tasks", res ?? []);
+  }
 
   //edit task
 }
