@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
+import 'package:to_do_app/view/home_page.dart';
 import 'package:to_do_app/widgets/button.dart';
 
-class IntroPage extends StatelessWidget {
+class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
 
+  @override
+  State<IntroPage> createState() => _IntroPageState();
+}
+
+class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +52,14 @@ class IntroPage extends StatelessWidget {
                               fontSize: 1.5.h, color: const Color(0xff24252C)),
                           textAlign: TextAlign.center),
                     ),
-                    const Button(title: "Let’s Start",)
+                    Button(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const HomePage()));
+                            print("done");
+                      },
+                      title: "Let’s Start",
+                    )
                   ],
                 )
               ],
