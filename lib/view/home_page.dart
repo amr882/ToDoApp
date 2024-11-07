@@ -1,8 +1,12 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:to_do_app/services/services.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:sizer/sizer.dart';
+import 'package:to_do_app/widgets/progress_indecator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,6 +26,10 @@ class _HomePageState extends State<HomePage> {
     return services?.getTasks() ?? [];
   }
 
+  double getTotalTaskProgress() {
+    return 50;
+  }
+
   @override
   void initState() {
     sheredP();
@@ -36,7 +44,7 @@ class _HomePageState extends State<HomePage> {
           BoxShadow(color: Color.fromARGB(157, 191, 173, 239), blurRadius: 20)
         ]),
         child: CurvedNavigationBar(
-          color: const Color(0xffeee9ff),
+          color: const Color(0xffEEE9FF),
           backgroundColor: Colors.transparent,
           buttonBackgroundColor: const Color(0xff5f33e1),
           items: <Widget>[
@@ -53,6 +61,51 @@ class _HomePageState extends State<HomePage> {
             //Handle button tap
           },
         ),
+      ),
+
+      // body ui
+
+      body: FutureBuilder(
+        future: sheredP(),
+        builder: (context, snapshot) {
+          return Column(
+            children: [
+              SizedBox(
+                height: 7.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Container(
+                    padding: const EdgeInsets.all(20),
+                    width: 90.w,
+                    height: 20.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: const Color(0xff5f33e1),
+                    ),
+                    child: ProgressIndecator(
+                      hasData: snapshot.hasData,
+                      value: getTotalTaskProgress(),
+                    )),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 20,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        color: Colors.blue,
+                      ),
+                    );
+                  },
+                ),
+              )
+            ],
+          );
+        },
       ),
     );
   }

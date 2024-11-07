@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
-import 'package:to_do_app/view/add_task_page.dart';
 import 'package:to_do_app/view/home_page.dart';
 import 'package:to_do_app/widgets/button.dart';
 
@@ -56,8 +55,8 @@ class _IntroPageState extends State<IntroPage> {
                     Button(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const AddTaskPage()));
-                            print("done");
+                            builder: (context) => const HomePage()));
+                        print("done");
                       },
                       title: "Let’s Start",
                     )
