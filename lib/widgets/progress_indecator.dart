@@ -25,10 +25,12 @@ class ProgressIndecator extends StatelessWidget {
           padding: EdgeInsets.only(left: 10.w),
           child: CircularPercentIndicator(
             radius: 5.h,
+            circularStrokeCap: CircularStrokeCap.round,
             animation: true,
             animationDuration: 200,
             percent: value/100,
-            center: Text("${value * 10}",
+            backgroundColor: const Color(0xff8764ff),
+            center: Text("${value.toInt()}%",
                 style: GoogleFonts.lexendDeca(
                     color: Colors.white,
                     fontSize: 2.h,

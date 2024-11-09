@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:to_do_app/services/services.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -26,8 +23,11 @@ class _HomePageState extends State<HomePage> {
     return services?.getTasks() ?? [];
   }
 
-  double getTotalTaskProgress() {
-    return 50;
+  double getTotalTaskProgress(int completedTasks, int totalTasks) {
+    if (totalTasks == 0) {
+      return 0.0;
+    }
+    return (completedTasks / totalTasks) * 100;
   }
 
   @override
@@ -68,6 +68,7 @@ class _HomePageState extends State<HomePage> {
       body: FutureBuilder(
         future: sheredP(),
         builder: (context, snapshot) {
+          print(snapshot.data!.length);
           return Column(
             children: [
               SizedBox(
@@ -85,12 +86,15 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: ProgressIndecator(
                       hasData: snapshot.hasData,
-                      value: getTotalTaskProgress(),
+                      value: getTotalTaskProgress(
+                        21,
+                        snapshot.data?.length ?? 0,
+                      ),
                     )),
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 20,
+                  itemCount: snapshot.data?.length ?? 0,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
