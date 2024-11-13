@@ -28,5 +28,4 @@ class TaskServices {
     await prefs.setStringList("tasks", res ?? []);
   }
 
-  //edit task
 }
