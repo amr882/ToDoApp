@@ -6,10 +6,6 @@ class TaskServices {
 
   // show all tasks
   Future<List<String>> getTasks() async {
-    if (prefs.getStringList("tasks") == null) {
-      print("error----");
-      return [];
-    }
     return prefs.getStringList("tasks") ?? [];
   }
 
@@ -27,5 +23,4 @@ class TaskServices {
     res?.removeAt(index);
     await prefs.setStringList("tasks", res ?? []);
   }
-
 }
