@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+A simple to do app to add tasks and store it locally with shared preferences
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
