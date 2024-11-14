@@ -2,9 +2,12 @@
 
 A new Flutter project.
 
-A simple to do app to add tasks and store it locally with shared preferences
+A simple to do app to add tasks and store it locally with shared preferences ,with responsive ui
 
 ![IMAGE_DESCRIPTION](https://github.com/amr882/ToDoApp/blob/main/screenshot/Screenshot%202024-11-14%20220420.png)
+![IMAGE_DESCRIPTION](https://github.com/amr882/ToDoApp/blob/main/screenshot/Screenshot%202024-11-14%20220551.png)
+![IMAGE_DESCRIPTION](https://github.com/amr882/ToDoApp/blob/main/screenshot/Screenshot%202024-11-14%20220632.png)
+![IMAGE_DESCRIPTION](https://github.com/amr882/ToDoApp/blob/main/screenshot/Screenshot%202024-11-14%20220846.png)
 
 ## Getting Started
 
